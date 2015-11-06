@@ -46,3 +46,4 @@
 - Emailverteiler: stima14@fh-joanneum.at
 
 - meine eMail: paul.koerner@edu.fh-joanneum.at
+- neue eMail: testtest@testtest.test
