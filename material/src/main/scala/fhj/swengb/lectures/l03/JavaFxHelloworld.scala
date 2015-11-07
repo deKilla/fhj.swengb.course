@@ -21,7 +21,7 @@ object JavaFxHelloworld {
 
 class JavaFxHelloworld extends javafx.application.Application {
 
-  val Fxml = "/fhj/swengb/lectures/l03/Helloworld.fxml"
+  val Fxml = "/fhj/swengb/lectures/l03/Calculator.fxml"
   val Css = "fhj/swengb/lectures/l03/buttonstyles.css"
 
   val loader = new FXMLLoader(getClass.getResource(Fxml))
@@ -49,6 +49,86 @@ class HelloworldController extends Initializable {
 
   def clicked(): Unit = {
     println("clicked")
+  }
+
+  def moved(): Unit = {
+    println("moved")
+  }
+
+  def clear(): Unit = {
+    println("cleared")
+  }
+
+  def plusminus(): Unit = {
+    println("+/-")
+  }
+
+  def percent(): Unit = {
+    println("%")
+  }
+
+  def divide(): Unit = {
+    println("/")
+  }
+
+  def seven(): Unit = {
+    println("7")
+  }
+
+  def eight(): Unit = {
+    println("8")
+  }
+
+  def nine(): Unit = {
+    println("9")
+  }
+
+  def multiply(): Unit = {
+    println("x")
+  }
+
+  def four(): Unit = {
+    println("4")
+  }
+
+  def five(): Unit = {
+    println("5")
+  }
+
+  def six(): Unit = {
+    println("6")
+  }
+
+  def minus(): Unit = {
+    println("-")
+  }
+
+  def one(): Unit = {
+    println("1")
+  }
+
+  def two(): Unit = {
+    println("2")
+  }
+
+  def three(): Unit = {
+    println("cleared")
+  }
+
+  def plus(): Unit = {
+    println("cleared")
+  }
+
+  def zero(): Unit = {
+    println("3")
+  }
+
+  def comma(): Unit = {
+    println(".")
+  }
+
+  def equals(): Unit = {
+    println("=")
   }
 
 }

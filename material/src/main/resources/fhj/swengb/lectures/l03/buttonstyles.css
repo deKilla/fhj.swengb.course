@@ -226,3 +226,30 @@
     -fx-text-fill: black;
     -fx-font-size: 14px;
 }
+
+#calculator {
+	-fx-background-color:#000;
+}
+
+#calculator .grey, #calculator .orange, #calculator .white { 
+	-fx-background-insets: 1,1,1,1;
+        -fx-background-radius: 0,0,0,0;
+ }
+//.grey:hover, .orange:hover, .white:hover { fx-border:1px solid #f00; }
+
+#calculator .grey {
+	-fx-background-color:#888;
+}
+
+.orange {
+	-fx-background-color:orange;
+	-fx-text-fill:#fff;
+}
+
+#calculator .white {
+	-fx-background-color:#fff;
+}
+
+#calculator .gridpane {
+	-fx-background-color:#000;
+}
