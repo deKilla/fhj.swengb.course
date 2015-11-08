@@ -47,14 +47,6 @@ class CalculatorController extends Initializable {
 
   }
 
-  def clicked(): Unit = {
-    println("clicked")
-  }
-
-  def moved(): Unit = {
-    println("moved")
-  }
-
   def clear(): Unit = {
     println("cleared")
   }
