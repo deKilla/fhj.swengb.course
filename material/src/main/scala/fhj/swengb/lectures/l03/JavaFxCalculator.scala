@@ -13,13 +13,13 @@ import scala.util.control.NonFatal
   * A simple hello world example application
   * for JavaFX.
   */
-object JavaFxHelloworld {
+object JavaFxCalculator {
   def main(args: Array[String]) {
-    Application.launch(classOf[JavaFxHelloworld], args: _*)
+    Application.launch(classOf[JavaFxCalculator], args: _*)
   }
 }
 
-class JavaFxHelloworld extends javafx.application.Application {
+class JavaFxCalculator extends javafx.application.Application {
 
   val Fxml = "/fhj/swengb/lectures/l03/Calculator.fxml"
   val Css = "fhj/swengb/lectures/l03/buttonstyles.css"
@@ -28,7 +28,7 @@ class JavaFxHelloworld extends javafx.application.Application {
 
   override def start(stage: Stage): Unit =
     try {
-      stage.setTitle("Hello World")
+      stage.setTitle("Calculator")
       loader.load[Parent]() // side effect
       val scene = new Scene(loader.getRoot[Parent])
       stage.setScene(scene)
@@ -41,7 +41,7 @@ class JavaFxHelloworld extends javafx.application.Application {
 }
 
 
-class HelloworldController extends Initializable {
+class CalculatorController extends Initializable {
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
 
@@ -112,15 +112,15 @@ class HelloworldController extends Initializable {
   }
 
   def three(): Unit = {
-    println("cleared")
+    println("3")
   }
 
   def plus(): Unit = {
-    println("cleared")
+    println("+")
   }
 
   def zero(): Unit = {
-    println("3")
+    println("0")
   }
 
   def comma(): Unit = {
