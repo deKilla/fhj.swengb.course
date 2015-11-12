@@ -20,6 +20,8 @@ object CalculatorFX {
   }
 }
 
+/* ----------- Carina hat was geändert ---------- */
+
 class CalculatorFX extends javafx.application.Application {
 
   val FxmlAbajric = "/fhj/swengb/calculatorfx/calculatorfx_abajric.fxml"
