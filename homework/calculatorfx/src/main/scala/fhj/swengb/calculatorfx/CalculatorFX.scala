@@ -9,7 +9,6 @@ import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
 
 import scala.util.control.NonFatal
-import scala.collection.mutable._
 
 /**
   * A simple calculator for JavaFX using reverse polish notation
@@ -52,6 +51,7 @@ class CalculatorFX extends javafx.application.Application {
     stage.getScene.getStylesheets.clear()
     stage.getScene.getStylesheets.add(css)
   }
+
 }
 
 object CalcFun {
@@ -117,11 +117,31 @@ case object ENTER extends CalcOps
 case object CLEAR extends CalcOps
 
 /**
+  * implements exponential calculation of the type x to the power of y
+  */
+case object POWER extends CalcOps
+
+/**
+  * implements exponential calculation of the type x²
+  */
+case object SQUARE extends CalcOps
+
+/**
+  * implements the calculation of 1 divided by a specific number
+  */
+case object ONEDIVX extends CalcOps
+
+/**
+  * implements the calculation of the square root of a number
+  */
+case object ROOT extends CalcOps
+
+
+/**
   * creates a double by using a comma
   */
 case object COMMA extends CalcOps
 
-// TODO implement other operations
 
 class CalculatorFXController extends Initializable {
 
@@ -140,7 +160,6 @@ class CalculatorFXController extends Initializable {
   }
 
 
-
   def plus(a: Double, b: Double): Double = a + b
 
   def minus(a: Double, b: Double): Double = b - a
@@ -153,6 +172,14 @@ class CalculatorFXController extends Initializable {
 
   def sgn (a: Double) = a * -1.0
 
+  def power(a: Double, exp: Double) = math.pow(a, exp)
+
+  def square(a: Double) = math.pow(a, 2.0)
+
+  def root(a: Double) = math.sqrt(a)
+
+  def onedivx(a: Double) = 1/a
+
   def updateDisplay(head: Double): Unit = {
     displayTextField.setText(head.formatted("%f"))
     //displayTextField.setText(head.toString)
@@ -163,10 +190,10 @@ class CalculatorFXController extends Initializable {
     try {
       op match {
         case SGN =>
-          val a = numbers.head
-          val update = numbers.updated(0,sgn(a))
-          numbers = update
-
+          numbers = mkNumber(reverseDigits) :: numbers
+          val a = numbers.tail.head
+          numbers = sgn(a) :: numbers.tail.tail
+          println(numbers)
         case ENTER =>
           numbers = mkNumber(reverseDigits) :: numbers
         case PLUS =>
@@ -174,6 +201,7 @@ class CalculatorFXController extends Initializable {
           val a = numbers.head
           val b = numbers.tail.head
           numbers = plus(a, b) :: numbers.tail.tail
+          println(numbers)
         case MINUS =>
           numbers = mkNumber(reverseDigits) :: numbers
           val a = numbers.head
@@ -201,17 +229,26 @@ class CalculatorFXController extends Initializable {
           numbers = percent(a, b) :: numbers.tail.tail
         case CLEAR =>
           numbers = (mkNumber(reverseDigits) :: numbers).diff(numbers)
-          println(numbers)
-        case COMMA =>
+        case POWER =>
           numbers = mkNumber(reverseDigits) :: numbers
-          val a = numbers.head
-          val b = numbers.tail.head
-          val numberLength = a.toString.length-2      //the string-length is always two bigger than the number length
-          val base = 10
-          numbers = plus(a* scala.math.pow(base, -numberLength), b ) :: numbers.tail.tail  //calculate the last input*10^-numberLength
+          val a = numbers.tail.head
+          val b = numbers.head
+          numbers = power(a, b) :: numbers.tail.tail
+        case SQUARE =>
+          numbers = mkNumber(reverseDigits) :: numbers
+          val a = numbers.tail.head
+          numbers = square(a) :: numbers.tail.tail
+        case ROOT =>
+          numbers = mkNumber(reverseDigits) :: numbers
+          val a = numbers.tail.head
+          numbers = root(a) :: numbers.tail.tail
+        case ONEDIVX =>
+          numbers = mkNumber(reverseDigits) :: numbers
+          val a = numbers.tail.head
+          numbers = onedivx(a) :: numbers.tail.tail
 
-
-        case _ => ???
+        case COMMA => ???
+        case _ => updateDisplay(numbers.head) //show last input
       }
       updateDisplay(numbers.head)
     }catch{
@@ -263,6 +300,14 @@ class CalculatorFXController extends Initializable {
   def clear(): Unit = op(CLEAR)
 
   def comma(): Unit = op(COMMA)
+
+  def power(): Unit = op(POWER)
+
+  def square(): Unit = op(SQUARE)
+
+  def root(): Unit = op(ROOT)
+
+  def onedivx(): Unit = op(ONEDIVX)
 
 }
 
