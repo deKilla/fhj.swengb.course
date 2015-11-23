@@ -11,6 +11,18 @@
     <artifactId>avatarix</artifactId>
     <name>fhj.swengb.homework.avatarix</name>
     <description>Queries a webservice and displays results</description>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
@@ -32,9 +44,9 @@
             <version>1.3.2</version>
         </dependency>
         <dependency>
-            <groupId>org.controlsfx</groupId>
-            <artifactId>controlsfx</artifactId>
-            <version>8.40.10</version>
+            <groupId>org.scalafx</groupId>
+            <artifactId>scalafx</artifactId>
+            <version></version>
         </dependency>
     </dependencies>
 
