@@ -146,7 +146,7 @@ class AvatarixController extends Initializable {
     path.getElements.add(new MoveTo(-800, 500))
     if (slideRight) {
       new MoveTo(-800, 500)
-      path.getElements().add(new CubicCurveTo(40f, 500, 390f, 500, 450, 500))
+      path.getElements().add(new CubicCurveTo(40f, 500, 250f, 500, 300, 500))
     } else {
       new MoveTo(450, 500)
       path.getElements().add(new CubicCurveTo(450, 500, 390f, 500, 40, 500))
